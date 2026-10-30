@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>บทเรียน EKG STEMI สำหรับ RHT</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fafafa;--card:#fff;--tx:#1c1c1e;--mu:#666;--bd:#ddd;--ac:#c62828;--ok:#2e7d32;--okb:#e8f5e9;--bad:#c62828;--badb:#fdecea;--wn:#fff8e1;--grid:#f4b6b6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161618;--card:#222226;--tx:#eee;--mu:#aaa;--bd:#3a3a3f;--ac:#ef5350;--okb:#1b3a1e;--badb:#431c1c;--wn:#3a331a;--grid:#6b3a3a}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Sarabun","Noto Sans Thai",system-ui,sans-serif;line-height:1.65}
+main{max-width:860px;margin:auto;padding:12px}
+h1{font-size:1.4rem;color:var(--ac);margin:.4em 0}h2{font-size:1.2rem;margin:1.2em 0 .4em;border-left:5px solid var(--ac);padding-left:8px}h3{font-size:1.05rem;margin:.8em 0 .2em}
+nav{display:flex;gap:6px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:6px 0;z-index:5}
+nav button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;font:inherit;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin:10px 0}
+.warn{background:var(--wn)}.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.92rem}td,th{border:1px solid var(--bd);padding:6px;text-align:left}th{background:var(--badb)}
+.ecg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px}
+.ecg div{position:relative;border:1px solid var(--grid);background:var(--card)}.ecg b{position:absolute;left:4px;top:0;font-size:.8rem}
+.ecg svg{width:100%;height:80px;display:block}
+.slot{border:2px dashed var(--bd);border-radius:8px;padding:8px;text-align:center;color:var(--mu);font-size:.9rem}.slot img{max-width:100%;border-radius:6px}
+.q{margin:14px 0;padding-bottom:10px;border-bottom:1px solid var(--bd)}.q label{display:block;padding:6px 8px;margin:3px 0;border:1px solid var(--bd);border-radius:8px;cursor:pointer}
+.q label.c{background:var(--okb);border-color:var(--ok)}.q label.w{background:var(--badb);border-color:var(--bad)}
+.ex{margin-top:6px;padding:8px;border-radius:8px;background:var(--wn);font-size:.93rem}
+.go{background:var(--ac);color:#fff;border:0;padding:12px 20px;border-radius:8px;font:inherit;cursor:pointer}
+.sc{font-size:1.2rem;font-weight:700;margin:8px 0}.hid{display:none}
+body{background:linear-gradient(180deg,#fff1f0 0,var(--bg) 320px)}
+h1{background:linear-gradient(135deg,#b71c1c,#ff5722,#ffb300);color:#fff;padding:16px;border-radius:16px;box-shadow:0 4px 14px #b71c1c44}
+h1+p{margin:6px 4px 0!important}
+h2{background:linear-gradient(90deg,#c62828,#ff7043);color:#fff;border:0;padding:8px 12px;border-radius:10px}
+h3{color:#1565c0}
+nav button{font-weight:700;border-width:2px}nav button[data-t=pre]{border-color:#1e88e5;color:#1e88e5}nav button[data-t=les]{border-color:#43a047;color:#43a047}nav button[data-t=post]{border-color:#8e24aa;color:#8e24aa}
+nav button[data-t=pre].on{background:#1e88e5;color:#fff}nav button[data-t=les].on{background:#43a047;color:#fff}nav button[data-t=post].on{background:#8e24aa;color:#fff}
+.card{border-left:6px solid #1e88e5;box-shadow:0 2px 8px #0001}.card.warn{border-left-color:#ffb300}.card.k{border-left-color:#43a047;background:var(--okb)}.card.dg{border-left-color:#c62828;background:var(--badb)}.card.pp{border-left-color:#8e24aa}
+th{background:linear-gradient(90deg,#ef5350,#ff8a65);color:#fff}
+.ecg div{background-color:#fff4f4;background-image:linear-gradient(#f4b6b6 1px,transparent 1px),linear-gradient(90deg,#f4b6b6 1px,transparent 1px);background-size:10px 10px;color:#111;border-color:#e57373}
+.ecg b{color:#b71c1c;background:#fffc;padding:0 3px;border-radius:3px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ecg div{background-color:#2a1a1a;background-image:linear-gradient(#5a3030 1px,transparent 1px),linear-gradient(90deg,#5a3030 1px,transparent 1px);color:#f5f5f5}:root:not([data-theme="light"]) .ecg b{background:#000a;color:#ff8a80}:root:not([data-theme="light"]) h3{color:#64b5f6}}
+.q{border-left:5px solid #8e24aa;padding-left:10px}.q label:hover{border-color:#1e88e5}
+.go{background:linear-gradient(90deg,#c62828,#ff7043);box-shadow:0 3px 10px #c6282855;font-weight:700}
+.tag{display:inline-block;padding:1px 9px;border-radius:99px;color:#fff;font-size:.8rem;margin-right:4px}.t1{background:#e53935}.t2{background:#1e88e5}.t3{background:#43a047}.t4{background:#8e24aa}
+#reg{display:none;max-width:480px;margin:24px auto}.lock #reg{display:block}.lock nav,.lock section{display:none!important}
+#reg input{width:100%;box-sizing:border-box;padding:12px;margin:6px 0;border:2px solid var(--bd);border-radius:10px;font:inherit;background:var(--card);color:var(--tx)}
+nav button{padding:10px 2px;font-size:.82rem}nav button[data-t=rank]{border-color:#fb8c00;color:#fb8c00}nav button[data-t=rank].on{background:#fb8c00;color:#fff}
+.lbt td.me{background:var(--wn);font-weight:700}.medal{font-size:1.3rem}
+.fl{display:flex;flex-direction:column;align-items:center;gap:4px;margin:8px 0}.fl div{border-radius:10px;padding:8px 12px;text-align:center;width:min(100%,520px);color:#fff;font-weight:600;box-sizing:border-box}.fl i{font-style:normal;color:var(--mu)}.f1{background:#c62828}.f2{background:#1e88e5}.f3{background:#43a047}.f4{background:#8e24aa}.f5{background:#fb8c00}.rw{background:linear-gradient(135deg,#ffd54f,#ff8f00);color:#3e2723;border-radius:12px;padding:12px;margin:10px 0;font-weight:700;text-align:center}
+</style></head><body><main>
+<h1>❤️ EKG STEMI & สัญญาณเตือนล่วงหน้า</h1>
+<p style="color:var(--mu);margin:0">บทเรียนสำหรับ RHT: ประเมินเร็ว อ่านคลื่นไฟฟ้าหัวใจได้ ส่งต่อทันเวลา</p>
+<div id="reg" class="card"><h2 style="margin-top:0">🎮 ลงทะเบียนผู้เรียน</h2>กรอกข้อมูลเพื่อเข้าร่วมเกมสะสมคะแนน ผู้ที่ได้คะแนนสูงสุดรับรางวัล!<input id="rn" placeholder="ชื่อ-สกุล" maxlength="60"><input id="ro" placeholder="หน่วยงาน (เช่น รพ.สต.…/โรงพยาบาล…/หอผู้ป่วย…)" maxlength="60"><div id="rm" style="color:var(--bad)"></div><button class="go" style="width:100%;margin-top:8px" onclick="startGame()">🚀 เริ่มเรียน</button></div>
+<nav><button class="on" data-t="pre">1. ก่อนเรียน</button><button data-t="les">2. บทเรียน</button><button data-t="post">3. หลังเรียน</button><button data-t="rank">🏆 อันดับ</button></nav>
+
+<section id="pre"><h2>แบบทดสอบก่อนเรียน (17 ข้อ)</h2><div id="qpre"></div><button class="go" onclick="grade('pre')">ส่งคำตอบ</button><div id="rpre"></div></section>
+
+<section id="les" class="hid">
+<h2>1. หลักคิด: Time is Muscle</h2>
+<div class="card warn">เส้นเลือดหัวใจอุดตัน → กล้ามเนื้อหัวใจตายต่อเนื่องทุกนาที เป้าหมาย: <b>ECG ภายใน 10 นาที</b> หลังถึงสถานพยาบาล, ฉีดยาละลายลิ่มเลือด (door-to-needle) <b>≤ 30 นาที</b>, หรือ PCI (door-to-balloon) <b>≤ 90 นาที</b></div>
+
+<h2>2. Early Warning Signs ของ STEMI</h2>
+<div class="card"><h3>อาการเด่น (typical)</h3>
+แน่น/จุก/เหมือนมีของหนักทับกลางอก <b>นาน &gt; 20 นาที</b> ไม่ดีขึ้นเมื่อพัก ร้าวไปแขนซ้าย/ไหล่/คอ/กราม/หลัง ร่วมกับเหงื่อแตก ใจสั่น คลื่นไส้ หายใจเหนื่อย
+<h3>อาการไม่ชัด (atypical) ที่มักพลาด</h3>
+<b>ผู้สูงอายุ เบาหวาน ผู้หญิง</b> อาจมาด้วย: จุกลิ้นปี่ เหนื่อยเฉย ๆ อ่อนเพลียมาก หน้ามืด เป็นลม คลื่นไส้อาเจียน เหงื่อแตกไม่มีเหตุ
+<h3>ปัจจัยเสี่ยง</h3>
+อายุมาก, ชาย, สูบบุหรี่, เบาหวาน, ความดันสูง, ไขมันสูง, ประวัติครอบครัวโรคหัวใจก่อนวัย, เคยเป็นโรคหลอดเลือดหัวใจ
+<h3>🚩 กฎทอง</h3>ผู้ป่วยอายุ &gt; 30 ปีขึ้นไปที่มีอาการเข้าได้กับ ACS หรือสงสัย → <b>ทำ 12-lead ECG ทันที ไม่ต้องรอผลเลือด</b></div>
+
+<h2>3. เกณฑ์วินิจฉัย STEMI จาก EKG</h2>
+<div class="card"><b>ST elevation ที่ J point ≥ 2 leads ที่อยู่ติดกัน (contiguous):</b>
+<ul><li>ทุก lead ยกเว้น V2–V3: ≥ <b>1 mm</b></li>
+<li>V2–V3: ชายอายุ ≥ 40 ปี ≥ <b>2 mm</b>; ชายอายุ &lt; 40 ≥ 2.5 mm; หญิง ≥ <b>1.5 mm</b></li>
+<li>ST depression V1–V3 + T สูง = สงสัย <b>Posterior MI</b> (ทำ V7–V9)</li>
+<li>New LBBB + อาการเข้าได้ → ถือเป็น STEMI equivalent / ปรึกษาทันที</li></ul></div>
+
+<h3>ลักษณะ EKG ตามเวลา (Evolution)</h3>
+<div class="tbl"><table><tr><th>ระยะ</th><th>ลักษณะ</th></tr>
+<tr><td>นาที–ชั่วโมงแรก</td><td>Hyperacute T (T สูง กว้าง) → ST elevation (นูนขึ้น "tombstone")</td></tr>
+<tr><td>ชั่วโมง–วัน</td><td>Q wave ใหม่, ST ค่อยลง</td></tr>
+<tr><td>วัน–สัปดาห์</td><td>T inversion, Q wave ถาวร</td></tr></table></div>
+
+<h3>ภาพ EKG จำลอง (schematic) แยกตามตำแหน่ง</h3>
+<p style="color:var(--mu);font-size:.9rem">ภาพด้านล่างเป็นภาพจำลองเพื่อเรียนรู้รูปแบบ ไม่ใช่ผู้ป่วยจริง</p>
+<h3>ก) Normal</h3><div class="ecg" data-c="normal"></div>
+<h3>ข) Anterior STEMI (LAD): ST↑ V1–V4, I, aVL; reciprocal ที่ II, III, aVF</h3><div class="ecg" data-c="ant"></div>
+<h3>ค) Inferior STEMI (RCA/LCx): ST↑ II, III, aVF; reciprocal ที่ I, aVL</h3><div class="ecg" data-c="inf"></div>
+<h3>ง) Lateral STEMI (LCx): ST↑ I, aVL, V5–V6</h3><div class="ecg" data-c="lat"></div>
+
+<div class="card"><b>📷 ใส่ภาพ EKG จริงจากหน่วยงานของท่าน</b><br>เลือกไฟล์ภาพ (ภาพแสดงในเครื่องคุณเท่านั้น ไม่ถูกส่งออกไปที่ใด) ใช้ภาพที่ปกปิดชื่อ/HN แล้ว (PDPA)
+<div class="slot"><input type="file" accept="image/*" onchange="pic(this)"><div></div></div><p style="font-size:.85rem;color:var(--mu)">ℹ️ ภาพที่เลือกแสดงในเครื่องของคุณเท่านั้น ไม่ถูกส่งออกไปที่ใด ใช้ประกอบการสอน/ฝึกอ่านตามขั้น S-T-E-M-I · ห้ามใช้ภาพที่มีชื่อ/HN ผู้ป่วย</p></div>
+
+<h2>4. อ่าน EKG อย่างเป็นระบบ 10 ขั้น</h2>
+<div class="card pp"><b>หลักสำคัญ:</b> อ่านเป็นลำดับทุกครั้ง อย่าข้ามไปมองแค่ ST กระดาษมาตรฐาน: <b>25 mm/s, 10 mm/mV</b> → ช่องเล็ก 1 mm = 0.04 วินาที / 0.1 mV; ช่องใหญ่ 5 mm = 0.2 วินาที</div>
+<div class="tbl"><table><tr><th>#</th><th>สิ่งที่ดู</th><th>ค่าปกติ / สิ่งที่ผิดปกติ</th></tr>
+<tr><td>1</td><td>Calibration, ชื่อ-วันเวลา</td><td>ตรวจสายหลุด/สัญญาณรบกวน, บันทึกเวลาทำ ECG</td></tr>
+<tr><td>2</td><td>Rate</td><td>300 ÷ จำนวนช่องใหญ่ระหว่าง R-R; ปกติ 60–100; &lt;60 brady, &gt;100 tachy</td></tr>
+<tr><td>3</td><td>Rhythm</td><td>P นำหน้า QRS ทุกตัว, R-R สม่ำเสมอ = sinus; ดู AF, AV block, VT</td></tr>
+<tr><td>4</td><td>Axis</td><td>QRS บวกใน I และ aVF = ปกติ</td></tr>
+<tr><td>5</td><td>P wave</td><td>บวกใน II, ลบใน aVR</td></tr>
+<tr><td>6</td><td>PR interval</td><td>0.12–0.20 วินาที (3–5 ช่องเล็ก); ยาวขึ้น = AV block</td></tr>
+<tr><td>7</td><td>QRS</td><td>กว้าง &lt;0.12 วินาที; <b>Pathologic Q</b> กว้าง ≥0.04 วินาที หรือลึก &gt;25% ของ R</td></tr>
+<tr><td>8</td><td><b>ST segment ⭐</b></td><td>วัดที่ <b>J point</b> เทียบเส้นฐาน (PR/TP) → ยก/ลง กี่ mm, รูปร่างนูน/เว้า, ใน lead ที่ติดกันหรือไม่, มี reciprocal ไหม</td></tr>
+<tr><td>9</td><td>T wave</td><td>ปกติบวกใน I, II, V3–V6; ลบใน aVR; ดู hyperacute / inverted</td></tr>
+<tr><td>10</td><td>QT</td><td>QTc &lt;440 ms (ชาย) / &lt;460 ms (หญิง)</td></tr></table></div>
+<div class="card k"><b>📏 วิธีวัด ST elevation:</b> หา J point (จุดที่ QRS จบและ ST เริ่ม) → ลากเส้นฐานจาก PR segment → วัดความสูงแนวตั้งเป็น mm (1 ช่องเล็ก = 1 mm) → เช็กว่าเกินเกณฑ์ใน ≥2 leads ติดกัน</div>
+<div class="card"><h3>รูปร่างของ ST elevation</h3><span class="tag t1">นูนขึ้น / ราบ (convex)</span> เข้าได้กับ STEMI &nbsp; <span class="tag t2">เว้าขึ้น (concave)</span> มักเป็น pericarditis / early repol (แต่ไม่ใช่กฎตายตัว)
+<h3>กลุ่ม lead ที่ติดกัน (contiguous)</h3>Septal V1–V2 · Anterior V3–V4 · Lateral I, aVL, V5–V6 · Inferior II, III, aVF · Right-sided V3R–V6R · Posterior V7–V9</div>
+<div class="card pp"><b>ช่วยจำ 5 คำถามของ STEMI:</b> ① ST ยก ≥ เกณฑ์? ② ≥2 leads ติดกัน? ③ มี reciprocal change? ④ มี Q ใหม่/T สูงผิดปกติ? ⑤ อาการเข้าได้ไหม? ถ้า "ใช่" ส่วนใหญ่ → เปิด STEMI Fast Track</div>
+
+<h2>4.1 ฝึกอ่าน EKG STEMI ทีละขั้น: เริ่มจากไหน ดูจากไหน</h2>
+<div class="card pp"><b>สูตรจำ S-T-E-M-I (5 ขั้นใน 60 วินาที)</b><ol>
+<li><b>S – Symptoms/Safety:</b> อาการเข้าได้ไหม ผู้ป่วยไม่เสถียร (BP ต่ำ, VF, หมดสติ) หรือไม่ ถ้าไม่เสถียรให้ช่วยชีวิตก่อน ไม่ต้องรอแปลผล</li>
+<li><b>T – Technique:</b> calibration 25 mm/s และ 10 mm/mV, สายหลุด/baseline เหวี่ยง/ขั้วสลับ (P ใน lead I ต้องบวก ถ้าลบสงสัยสลับแขน)</li>
+<li><b>E – Examine ST:</b> หา J point เทียบเส้นฐาน แล้วไล่ดูทีละกลุ่ม: Inferior (II, III, aVF) → Lateral (I, aVL, V5–V6) → Septal/Anterior (V1–V4) → aVR → ST↓ ที่ V1–V3 (Posterior)</li>
+<li><b>M – Map:</b> ST↑ ≥ 2 lead ที่ติดกันหรือไม่ เกินเกณฑ์กี่ mm ตำแหน่งใด หลอดเลือดใด</li>
+<li><b>I – Identify/Confirm:</b> มี reciprocal change, hyperacute T, Q ใหม่ ไหม เทียบ ECG เก่า และตัด mimics (pericarditis, early repol, LBBB, LVH)</li></ol></div>
+<h3>ภาพที่ 1: ดูตรงไหนของคลื่น</h3>
+<div id="annoBox" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px"></div>
+<div class="card k"><b>วิธีดู:</b> ① หาเส้นฐาน (ช่วง PR หรือ TP) ② หา J point (จุดที่ QRS จบ) ③ วัดว่า J point สูง/ต่ำกว่าเส้นฐานกี่ mm ④ ดูรูปร่าง ST: นูนขึ้น (convex) = น่ากลัวกว่าเว้า (concave)</div>
+<h3>ภาพที่ 2: Anterior STEMI 12 lead (ภาพจำลอง) — ดูทีละกลุ่มสี</h3>
+<div style="font-size:.9rem"><span class="tag t3">เขียว = Inferior</span> <span class="tag t2">น้ำเงิน = Lateral</span> <span class="tag" style="background:#fb8c00">ส้ม = Septal/Anterior</span> <span class="tag" style="background:#888">เทา = aVR</span> · ▲ = ST↑, ▼ = ST↓</div>
+<div class="ecg" id="t12a" style="grid-template-columns:repeat(4,1fr)"></div>
+<div class="card"><b>อ่านแบบนี้:</b> เริ่มที่ส้ม (V1–V4) เห็น ST↑ ติดกัน 4 lead → Anterior/LAD, ดู lateral (I, aVL) ก็ยก, แล้วยืนยันด้วย reciprocal ที่เขียว (II, III, aVF) ที่ ST↓ → STEMI จริง</div>
+<h3>ภาพที่ 3: Inferior STEMI 12 lead (ภาพจำลอง)</h3>
+<div class="ecg" id="t12b" style="grid-template-columns:repeat(4,1fr)"></div>
+<details class="card"><summary><b>🔍 ลองอ่านเองก่อน แล้วกดดูเฉลย</b></summary><p><b>เฉลย:</b> ST↑ ที่ II, III, aVF (เขียว, III สูงสุด) = Inferior STEMI; ST↓ ที่ I และ aVL (น้ำเงิน) = reciprocal; หลอดเลือดที่น่าจะเป็นคือ RCA ขั้นต่อไป: ติด V4R ดู RV infarct, ระวังความดันตก/จังหวะช้า งดไนเตรตถ้า BP ต่ำ, ให้ aspirin และเปิด Fast Track</p></details>
+<div class="card warn">💡 <b>เคล็ดลับ:</b> ถ้าหา ST↑ ไม่เจอ ให้ย้อนไปดู T สูงผิดปกติ (hyperacute), ST↓ V1–V3 (posterior) และ ST↑ aVR (left main) ก่อนสรุปว่าปกติ · อยากฝึกกับภาพจริง ใช้ช่องใส่ภาพ EKG ในบทที่ 3 แล้วอ่านตามขั้น S-T-E-M-I</div>
+
+<h2>5. รูปแบบพิเศษที่ต้องรู้ (ไม่ใช่ ST↑ แบบตำรา)</h2>
+<div class="card dg"><h3>5.1 Hyperacute T wave — สัญญาณแรกสุด</h3>T สูง กว้าง สมมาตร ใน lead หน้าอก (V2–V4) ใน 30 นาทีแรก อาจยังไม่มี ST↑ ชัด → <b>ทำ ECG ซ้ำทุก 10–15 นาที</b> ถ้าอาการยังอยู่ ห้ามบอกว่า "ปกติ" แล้วกลับบ้าน</div><div class="ecg" data-c="hyp"></div>
+<div class="card dg"><h3>5.2 Posterior MI — มองผ่านกระจก</h3>ST↓ ลึก ใน V1–V3 + R สูงเด่นใน V1–V2 + T ตั้ง (กลับด้านของ ST↑ ผนังหลัง) มักมาพร้อม inferior/lateral MI → <b>ติดขั้ว V7–V9</b>: ST↑ ≥0.5 mm = Posterior STEMI</div><div class="ecg" data-c="post"></div>
+<div class="card warn"><h3>5.3 Wellens syndrome — LAD ตีบวิกฤต</h3>มีประวัติเจ็บอกมาก่อน ตอนทำ ECG <b>ไม่เจ็บแล้ว</b> + T inversion ลึก/biphasic ใน V2–V3 (ST แทบปกติ, ไม่มี Q) → มักตามด้วย anterior MI ใหญ่ <b>ห้ามส่ง treadmill</b> ปรึกษาอายุรแพทย์หัวใจ/ส่งต่อ</div><div class="ecg" data-c="wel"></div>
+<div class="card"><h3>5.4 LBBB + เจ็บอก — Sgarbossa criteria</h3>LBBB ทำให้ ST เปลี่ยนจนอ่านยาก ให้ดู: <br>• <b>Concordant ST↑ ≥1 mm</b> ใน lead ที่ QRS บวก (5 คะแนน) · • Concordant ST↓ ≥1 mm ใน V1–V3 (3 คะแนน) · • ST↑ ที่ discordant มากเกินไป (≥25% ของความลึก S) (modified Sgarbossa) → ถ้ามีเกณฑ์ข้อใดข้อหนึ่ง สงสัย STEMI-equivalent <b>ปรึกษาทันที</b></div>
+<div class="card"><h3>5.5 de Winter T — เทียบเท่า LAD ตัน</h3>ST↓ เฉียงขึ้น (upsloping) ตั้งแต่ J point ใน V1–V6 ต่อด้วย T สูงตั้ง สมมาตร และมักมี ST↑ เล็กน้อยใน aVR → ไม่ผ่านเกณฑ์ ST↑ แต่เปิดทางด่วนเหมือน STEMI</div>
+<div class="card"><h3>5.6 ST↑ ใน aVR + ST↓ หลาย lead</h3>ST↓ ทั่ว ≥6 leads (มักเด่น V4–V6, II) + ST↑ ใน aVR ≥1 mm = สงสัย left main หรือ 3-vessel disease ที่ตีบรุนแรง; ผู้ป่วยมักช็อก/หัวใจล้มเหลว → ส่งด่วน ห้ามเป็นเพียง "NSTEMI ธรรมดา"</div>
+<div class="card"><h3>5.7 ภาวะแทรกซ้อนด้านจังหวะที่ต้องเฝ้าดู</h3><b>VF/VT</b> (ช่วง 24–48 ชม.แรก, ต้อง defibrillate) · <b>AV block</b> ในผนังล่าง มักชั่วคราว (ตอบสนอง atropine) แต่ในผนังหน้า มักรุนแรงและต้องใส่ pacemaker · <b>Sinus bradycardia</b> ในผนังล่าง · <b>AF</b> ทำให้ hemodynamic แย่ลง</div>
+<div class="card k"><h3>เทียบ STEMI กับ NSTEMI/UA</h3>STEMI = ST↑ (หรือ equivalent) + เนื้อตายเฉียบพลัน → เปิดหลอดเลือดทันที · NSTEMI/UA = ST↓/T inversion/ECG ปกติ + Troponin ↑ (NSTEMI) → รับไว้ดูแล/ประเมินความเสี่ยง (ไม่ใช่เหตุผลให้ล่าช้า ถ้า unstable ให้ส่งด่วนเช่นกัน)</div>
+
+<h2>6. แผนที่ตำแหน่งกล้ามเนื้อหัวใจ</h2>
+<div class="tbl"><table><tr><th>ตำแหน่ง</th><th>Leads</th><th>หลอดเลือด</th><th>ข้อควรระวัง</th></tr>
+<tr><td>Anterior</td><td>V1–V4 (±I, aVL)</td><td>LAD</td><td>เสี่ยงหัวใจล้มเหลว/ช็อก</td></tr>
+<tr><td>Inferior</td><td>II, III, aVF</td><td>RCA (บ่อย)</td><td>เช็ก RV infarct, brady/AV block</td></tr>
+<tr><td>Lateral</td><td>I, aVL, V5–V6</td><td>LCx</td><td>ดู reciprocal II, III, aVF</td></tr>
+<tr><td>Posterior</td><td>ST↓ V1–V3</td><td>RCA/LCx</td><td>ทำ V7–V9</td></tr>
+<tr><td>RV infarct</td><td>V4R ST↑</td><td>RCA</td><td><b>งดไนเตรต</b> ถ้า BP ต่ำ</td></tr></table></div>
+<div class="card"><b>Reciprocal change</b> (ST ลงใน lead ตรงข้าม) ช่วยยืนยันว่าเป็น STEMI จริง ไม่ใช่ mimic</div>
+
+<h2>7. สิ่งที่คล้าย STEMI (Mimics)</h2>
+<div class="tbl"><table><tr><th>ภาวะ</th><th>ข้อสังเกต</th></tr>
+<tr><td>Pericarditis</td><td>ST↑ เว้าขึ้น ทั่วหลาย lead, PR depression, เจ็บดีขึ้นเมื่อโน้มตัวไปหน้า, ไม่มี reciprocal</td></tr>
+<tr><td>Early repolarization</td><td>คนหนุ่มสาว ST เว้า มี J-point notch คงที่</td></tr>
+<tr><td>LVH / LBBB</td><td>ST↑ ใน lead ที่ QRS ลึก สัดส่วนสัมพันธ์กับ QRS</td></tr>
+<tr><td>Brugada</td><td>ST coved ใน V1–V2 + RBBB pattern</td></tr></table>
+<p>⚠️ ถ้าไม่แน่ใจ + อาการเข้าได้ → <b>ปฏิบัติเป็น STEMI และปรึกษาแพทย์</b></p></div>
+
+<h2>8. ขั้นตอนปฏิบัติสำหรับ RHT</h2>
+<div class="card"><ol>
+<li><b>0–10 นาที:</b> วัด V/S, SpO₂, ทำ 12-lead ECG, เปิดเส้น IV, ซักประวัติสั้น ๆ (เวลาเริ่มเจ็บ)</li>
+<li><b>ยาเบื้องต้น:</b> Aspirin 160–325 mg เคี้ยวทันที (ถ้าไม่แพ้/ไม่มีเลือดออกรุนแรง); Nitrate อมใต้ลิ้นถ้าเจ็บ และ SBP &gt; 90, ไม่ใช้ PDE5 inhibitor ใน 24–48 ชม., ไม่สงสัย RV infarct; ให้ O₂ เฉพาะ SpO₂ &lt; 90%</li>
+<li><b>ส่ง/ปรึกษา STEMI Fast Track</b> ส่ง ECG ผ่านไลน์/ระบบ telemedicine เร็วที่สุด</li>
+<li><b>ตัดสินใจ reperfusion:</b> PCI ถ้าถึงได้ใน 120 นาที มิฉะนั้นยาละลายลิ่มเลือด (ตรวจ contraindication: เลือดออกในสมองเคย, stroke &lt; 3 เดือน, เลือดออกรุนแรง, ผ่าตัดใหญ่ล่าสุด, BP &gt; 180/110 ควบคุมไม่ได้)</li>
+<li><b>ระหว่างส่ง:</b> monitor ต่อเนื่อง, เตรียม defibrillator (VF/VT เป็นภาวะแทรกซ้อนสำคัญ), บันทึกเวลาทุกขั้นตอน</li></ol></div>
+
+<h2>9. PCI และการเลือกวิธีเปิดหลอดเลือด (Reperfusion)</h2>
+<div class="card"><b>PCI (Percutaneous Coronary Intervention)</b> = สวนหัวใจใส่ลวดนำ ผ่านจุดตัน ขยายด้วยบอลลูน และใส่ขดลวด (stent) โดยมักเจาะทางหลอดเลือด radial; เป็นวิธีเปิดหลอดเลือดที่ได้ผลดีที่สุดเมื่อทำได้ทันเวลา อ้างอิง ACC/AHA 2025 ACS และ ESC 2023 ACS</div>
+<h3>แผนผังตัดสินใจ</h3>
+<div class="fl"><div class="f1">STEMI ยืนยัน (อาการ &lt;12 ชม. หรือ 12–24 ชม. และยังมี ischemia)</div><i>▼</i><div class="f2">PCI center ทำได้ภายใน FMC-to-device ≤ 120 นาที?</div><i>▼</i><div class="f3">ได้ → Primary PCI (มา PCI center: D2B ≤ 90 นาที; ส่งต่อ: FMC-to-device ≤ 120 นาที, DIDO ≤ 30 นาที)</div><div class="f5">ไม่ได้ → ให้ยาละลายลิ่มภายใน 30 นาที (ถ้าไม่มีข้อห้าม) แล้วส่งต่อทำ angiography ภายใน 2–24 ชม.</div><div class="f4">ช็อก / หัวใจล้มเหลวรุนแรง / มีข้อห้ามยาละลายลิ่ม → ส่งทำ PCI เสมอ แม้เกินเวลา</div></div>
+<div class="tbl"><table><tr><th>หัวข้อ</th><th>Primary PCI</th><th>Fibrinolysis</th></tr><tr><td>เป้าหมายเวลา</td><td>D2B ≤ 90 / FMC-to-device ≤ 120 นาที</td><td>Door-to-needle ≤ 30 นาที</td></tr><tr><td>อัตราเปิดหลอดเลือด</td><td>&gt; 90% (TIMI 3)</td><td>ประมาณ 60–80% ที่ 90 นาที</td></tr><tr><td>ความเสี่ยงสำคัญ</td><td>เลือดออกบริเวณเจาะ, contrast nephropathy, stent thrombosis</td><td>เลือดออกในสมอง, เลือดออกอื่น, ล้มเหลวของการละลาย</td></tr><tr><td>เหมาะเมื่อ</td><td>ทำได้ทันเวลา, ช็อก, มีข้อห้ามยา, มาช้า &gt; 3 ชม.</td><td>PCI เกิน 120 นาที, มาเร็ว &lt; 3 ชม., ไม่มีข้อห้าม</td></tr></table></div>
+<div class="card pp"><h3>รูปแบบ PCI ที่ควรรู้</h3><b>Primary PCI</b> เป็นวิธีแรก · <b>Rescue PCI</b> ทันทีหลังยาละลายลิ่มล้มเหลว · <b>Pharmaco-invasive</b> ให้ยาละลายลิ่มก่อนแล้วส่ง angiography 2–24 ชม. · <b>Complete revascularization</b> ในผู้ป่วยอาการคงที่ที่มีหลายเส้นเลือดตัน ทำพร้อมกันหรือนัดภายหลังตามแพทย์ · ไม่แนะนำ thrombus aspiration เป็นประจำ</div>
+<div class="card k"><h3>การเตรียมผู้ป่วยก่อน/หลัง PCI (พยาบาล RHT)</h3><b>ก่อน:</b> ให้ aspirin + P2Y12 ตามแผน, เปิด IV, ซักแพ้ยา/ยาที่ใช้ (anticoagulant), เตรียม consent, ECG ล่าสุด · <b>หลัง:</b> เฝ้าแผลเจาะ (radial/femoral: เลือดออก, ก้อนเลือด, ชีพจรปลายทาง), ECG ซ้ำ, อาการเจ็บอกกลับมา (สงสัย stent thrombosis), ภาวะไตหลังฉีดสี, arrhythmia, ทำ echo ดู LVEF, ส่งฟื้นฟูหัวใจ</div>
+
+<h2>10. การส่งต่อผู้ป่วย STEMI (Referral)</h2>
+<div class="card dg"><b>หลักสำคัญ:</b> ตัดสินใจส่งต่อ <b>ตั้งแต่เห็น ST↑ ไม่ต้องรอ Troponin หรือ X-ray</b> เป้าหมาย Door-In-Door-Out (DIDO) ≤ 30 นาที ที่ รพ. ต้นทาง</div>
+<div class="tbl"><table><tr><th>ขั้นตอน</th><th>รายละเอียด</th></tr><tr><td>1. ประสาน</td><td>ส่ง ECG ผ่านระบบ telemedicine/ไลน์, โทรหาแพทย์/cath lab ปลายทาง, แจ้ง STEMI Fast Track</td></tr><tr><td>2. SBAR</td><td>S: STEMI ตำแหน่งใด เวลาเริ่มอาการ · B: โรคประจำตัว ยา แพ้ยา · A: V/S, ECG, ยาที่ให้ + เวลา, ข้อห้ามยาละลายลิ่ม · R: ขอรับ primary PCI/rescue</td></tr><tr><td>3. บันทึกเวลา</td><td>เริ่มเจ็บ, ถึง รพ. (FMC), ECG, aspirin, ยาละลายลิ่ม, ออกจาก รพ.</td></tr><tr><td>4. เตรียมการขนส่ง</td><td>พยาบาล/ทีมที่ดูแลได้, monitor + defibrillator, IV 2 เส้น, ยาฉุกเฉิน (atropine, amiodarone/lidocaine), ออกซิเจนถ้า SpO₂ &lt; 90%</td></tr><tr><td>5. ระหว่างส่ง</td><td>ติดตาม ECG ต่อเนื่อง ดู VF/VT (shock ทันที), ความดันตก, brady/AV block, เจ็บอกกลับมา</td></tr><tr><td>6. หลังยาละลายลิ่ม</td><td>ประเมินที่ 60–90 นาที: ST ลด ≥ 50% + เจ็บลดลง = สำเร็จ · ไม่สำเร็จ = rescue PCI ทันที · ส่งต่อทุกรายภายใน 2–24 ชม.</td></tr></table></div>
+<div class="card"><b>เอกสารที่ส่งไปกับผู้ป่วย:</b> ECG ทุกใบ + เวลา, รายการยาที่ให้, ผลแล็บที่มี, ประวัติแพ้ยา, ข้อมูลญาติ/ใบยินยอม</div>
+
+<h2>11. การรักษาด้วยยา (Drug Therapy)</h2>
+<div class="card warn">⚠️ ขนาดยาด้านล่างเป็นข้อมูลอ้างอิงเพื่อการเรียนรู้ ตามแนวทาง ACC/AHA และ ESC ต้องตรวจสอบกับโปรโตคอลโรงพยาบาลและคำสั่งแพทย์เสมอ</div>
+<div class="tbl"><table><tr><th>กลุ่มยา</th><th>ยา/ขนาด</th><th>ข้อสำคัญ</th></tr>
+<tr><td>Aspirin</td><td>162–325 mg เคี้ยว → 75–100 mg/วัน</td><td>ให้ทันที ทุกราย ถ้าไม่แพ้</td></tr>
+<tr><td>P2Y12 (ก่อน primary PCI)</td><td>Ticagrelor 180 mg → 90 mg วันละ 2 ครั้ง / Prasugrel 60 mg → 10 mg / Clopidogrel 600 mg → 75 mg</td><td>Prasugrel ไม่ใช้ในผู้ที่เคย stroke/TIA, อายุ ≥ 75 ปี หรือน้ำหนัก &lt; 60 กก. · DAPT ต่อ 12 เดือน</td></tr>
+<tr><td>P2Y12 (หลังยาละลายลิ่ม)</td><td>Clopidogrel 300 mg (อายุ ≤ 75 ปี) / 75 mg (อายุ &gt; 75 ปี) → 75 mg/วัน</td><td>ไม่ใช้ ticagrelor/prasugrel ร่วมยาละลายลิ่ม</td></tr>
+<tr><td>Anticoagulant (PCI)</td><td>UFH 70–100 U/kg IV bolus</td><td>ในห้อง cath lab ตามแพทย์</td></tr>
+<tr><td>Anticoagulant (ร่วมยาละลายลิ่ม)</td><td>Enoxaparin 30 mg IV + 1 mg/kg SC ทุก 12 ชม. (อายุ ≥ 75: ไม่ bolus, 0.75 mg/kg) หรือ UFH 60 U/kg (สูงสุด 4,000) → 12 U/kg/ชม.</td><td>ปรับตามไต/อายุ</td></tr>
+<tr><td>Fibrinolytic</td><td>Streptokinase 1.5 ล้านยูนิต IV ใน 30–60 นาที · Tenecteplase bolus ตามน้ำหนัก 30–50 mg · Alteplase 15 mg bolus → 0.75 mg/kg (สูงสุด 50) 30 นาที → 0.5 mg/kg (สูงสุด 35) 60 นาที</td><td>SK ไม่จำเพาะ fibrin: ความดันตก/แพ้ ห้ามใช้ซ้ำภายใน 6 เดือนหลังเคยได้ · Tenecteplase ผู้สูงอายุ ≥ 75 ปี พิจารณาครึ่งขนาด</td></tr>
+<tr><td>Nitrate</td><td>อมใต้ลิ้น 0.4 mg ทุก 5 นาที ไม่เกิน 3 ครั้ง; IV ถ้าเจ็บต่อเนื่อง/ความดันสูง/หัวใจล้มเหลว</td><td>ห้าม: SBP &lt; 90, HR &lt; 50 หรือ &gt; 100, RV infarct, PDE5 inhibitor ใน 24–48 ชม.</td></tr>
+<tr><td>Morphine</td><td>2–4 mg IV ค่อยๆ ให้</td><td>ใช้เมื่อเจ็บมาก; ระวังหายใจช้า ความดันตก และอาจทำให้ P2Y12 ดูดซึมช้าลง</td></tr>
+<tr><td>Oxygen</td><td>เฉพาะ SpO₂ &lt; 90%</td><td>ให้เกินจำเป็นอาจเป็นผลเสีย</td></tr>
+<tr><td>β-blocker</td><td>แบบรับประทานภายใน 24 ชม.</td><td>ไม่ให้ถ้ามีหัวใจล้มเหลว/ช็อก/AV block/ความเสี่ยงช็อกสูง; ไม่ให้ IV เป็นประจำ</td></tr>
+<tr><td>Statin</td><td>Atorvastatin 40–80 mg ให้เร็ว</td><td>High-intensity ทุกราย</td></tr>
+<tr><td>ACEI/ARB</td><td>เริ่มภายใน 24 ชม.</td><td>anterior MI, EF &lt; 40%, หัวใจล้มเหลว, เบาหวาน, ความดันสูง · งดถ้าความดันต่ำ/ไตเสื่อมเฉียบพลัน/K สูง</td></tr>
+<tr><td>MRA</td><td>Eplerenone/spironolactone</td><td>EF ≤ 40% ร่วม HF หรือเบาหวาน, K &lt; 5.0</td></tr></table></div>
+<div class="card dg"><h3>ข้อห้ามยาละลายลิ่มเลือด</h3><b>สัมบูรณ์:</b> เคยมีเลือดออกในสมอง · ischemic stroke ภายใน 3 เดือน · เนื้องอก/AVM ในสมอง · เลือดออกในร่างกายขณะนี้ · สงสัย aortic dissection · บาดเจ็บศีรษะ/ใบหน้ารุนแรงภายใน 3 เดือน · ผ่าตัดสมอง/ไขสันหลังภายใน 2 เดือน<br><b>สัมพัทธ์:</b> BP &gt; 180/110 · stroke &gt; 3 เดือน · ใช้ warfarin/anticoagulant · CPR นาน &gt; 10 นาที · ผ่าตัดใหญ่ใน 3 สัปดาห์ · ตั้งครรภ์ · แผลกระเพาะที่ยัง active · เคยได้ streptokinase</div>
+<div class="card k"><h3>ติดตามหลังยาละลายลิ่ม</h3>สำเร็จ: เจ็บลดลง + ST ลด ≥ 50% ที่ 60–90 นาที + reperfusion arrhythmia (เช่น AIVR) · เฝ้าระวัง: ปวดศีรษะรุนแรง/ซึม/แขนขาอ่อนแรง (สงสัย ICH ให้หยุดยาและส่ง CT ทันที), เลือดออก, ความดันตก (SK)</div>
+<div class="card pp"><h3>การรักษาระยะยาว (Secondary prevention)</h3>DAPT 12 เดือน · statin + ควบคุม LDL ตามเป้า · ACEI/ARB · β-blocker · ฟื้นฟูหัวใจ (cardiac rehab) · เลิกบุหรี่ ควบคุมเบาหวาน/ความดัน · พิจารณา PPI ถ้าเสี่ยงเลือดออกทางเดินอาหาร</div>
+
+<h2>12. สรุปจำง่าย</h2>
+<div class="card">เจ็บอก &gt; 20 นาที → <b>ECG ใน 10 นาที</b> → ST↑ ≥ 2 leads ติดกัน → <b>Aspirin + ส่งต่อ/ปรึกษา</b> → เวลาคือกล้ามเนื้อหัวใจ</div>
+</section>
+
+<section id="rank" class="hid"><h2>🏆 Leaderboard ผู้ร่วมเรียน</h2><div id="adm"><button class="go" style="background:#455a64" onclick="document.getElementById('adm2').classList.toggle('hid')">🗑️ รีเซ็ตอันดับ (ผู้จัด)</button><div id="adm2" class="card hid">ใส่รหัสผู้จัด: <input id="pin" type="password" inputmode="numeric" maxlength="8" style="padding:8px;border:2px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);width:120px"> <button class="go" onclick="resetBoard()">ยืนยันล้างอันดับ</button><div id="am" style="margin-top:6px"></div></div></div><div class="card warn"><b>วิธีคิดคะแนน:</b> ข้อสอบหลังเรียนถูกข้อละ 100 + พัฒนาการ (หลัง−ก่อน) ข้อละ 20 + โบนัสความเร็ว สูงสุด 50 · คะแนนเสมอกัน ใครทำเร็วกว่าอยู่อันดับสูงกว่า</div><div class="lb"></div></section>
+<section id="post" class="hid"><h2>แบบทดสอบหลังเรียน (17 ข้อ)</h2><div id="qpost"></div><button class="go" onclick="grade('post')">ส่งคำตอบ</button><div id="rpost"></div><div class="lb"></div></section>
+</main>
+<script>var SHEET_URL="https://script.google.com/macros/s/AKfycbwPdq0aJwWRr0eGjrfbm2tpaG-n1xZmuJmx2eUwGLUYTaEKeOyOFuEpNe6LJqbN8aIUJg/exec";</script>
+<script>
+// ---- ECG simulator ----
+var D={normal:{I:[0,4],aVL:[0,3],V1:[0,-2],V2:[0,5],V3:[0,5],V4:[0,5],II:[0,4],III:[0,2],aVF:[0,3],V5:[0,4],V6:[0,4]}};
+D.ant={I:[4,6],aVL:[5,6],V1:[10,8],V2:[16,10],V3:[16,10],V4:[12,8],II:[-3,-1],III:[-4,-1],aVF:[-3,-1],V5:[4,5],V6:[1,4]};
+D.inf={I:[-5,-3],aVL:[-7,-4],V1:[0,-2],V2:[0,4],V3:[0,4],V4:[0,4],II:[10,9],III:[13,9],aVF:[11,9],V5:[0,4],V6:[0,3]};
+D.lat={I:[7,6],aVL:[8,6],V1:[0,-2],V2:[0,4],V3:[0,4],V4:[2,5],II:[-1,3],III:[-4,0],aVF:[-3,1],V5:[9,8],V6:[8,7]};
+D.hyp={V1:[1,3],V2:[3,17],V3:[3,18],V4:[2,15],II:[0,4],III:[0,2],aVF:[0,3],V5:[0,5]};
+D.post={V1:[-7,5],V2:[-9,6],V3:[-7,5],V4:[-2,4],II:[0,4],III:[0,2],aVF:[0,3],V5:[0,4]};
+D.wel={V1:[0,-2],V2:[1,-10],V3:[1,-13],V4:[0,-9],V5:[0,-3],II:[0,3]};
+function strip(st,t,neg){var p=[],b=function(o){var q=[[0,0],[8,0],[15,6],[22,0],[30,0],[33,-3],[37,26],[41,-8],[44,st]];for(var x=46;x<=94;x+=3){var u=(x-44)/50;q.push([x,st*(1-u*u)+t*Math.sin(Math.PI*u)]);}q.push([100,0]);q.forEach(function(a){p.push((a[0]+o+4).toFixed(0)+","+(50-a[1]*(neg==2?-1:neg?.6:1)).toFixed(1));});};b(0);b(100);
+return '<svg viewBox="0 0 204 100"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="'+p.join(" ")+'"/></svg>';}
+function build(el){var d=D[el.dataset.c];el.innerHTML=Object.keys(d).map(function(k){return '<div><b>'+k+'</b>'+strip(d[k][0],d[k][1],k=="V1")+'</div>';}).join("");}
+document.querySelectorAll(".ecg[data-c]").forEach(build);
+function pic(i){var f=i.files[0];if(!f)return;window.ekgFile=f;var r=new FileReader();r.onload=function(){i.nextElementSibling.innerHTML='<img src="'+r.result+'">';};r.readAsDataURL(f);}
+// ---- Quiz ----
+function eg(c,l){var o={};l.forEach(function(k){o[k]=D[c][k];});var id="e"+Math.random().toString(36).slice(2,6);return '<div class="ecg" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))">'+l.map(function(k){return '<div><b>'+k+'</b>'+strip(D[c][k][0],D[c][k][1],k=="V1")+'</div>';}).join("")+'</div>';}
+var Q={pre:[
+{q:"ผู้ชายอายุ 58 ปี เจ็บแน่นกลางอก ร้าวไปกราม นาน 30 นาที เหงื่อแตก ข้อใดเข้าได้กับ ACS มากที่สุด",o:["เจ็บจี๊ดเมื่อกดหน้าอก","แน่นหนักกลางอก นาน >20 นาที ร่วมเหงื่อแตก ร้าวกราม","เจ็บเมื่อหายใจเข้าลึก","เจ็บเฉพาะเมื่อขยับแขน"],a:1,e:"อาการแน่น/หนักกลางอก นานกว่า 20 นาที ร้าวกราม/แขน ร่วมเหงื่อแตก เป็นลักษณะ typical ACS ส่วนเจ็บจี๊ดจุดเดียว กดเจ็บ หรือเจ็บตามการหายใจ/ท่าทาง มักเป็นสาเหตุจากกล้ามเนื้อ/เยื่อหุ้มปอด"},
+{q:"ผู้ป่วยสงสัย ACS มาถึงโรงพยาบาล หรือขณะรักษาอยู่ในหอผู้ป่วยแล้วเกิดเจ็บแน่นหน้าอกใหม่ การกระทำแรกที่สำคัญที่สุดคือข้อใด",o:["รอผลเจาะเลือด Troponin","ทำ 12-lead ECG ภายใน 10 นาที","ส่ง X-ray ปอด","ให้ยาแก้ปวดแล้วสังเกตอาการ"],a:1,e:"STEMI วินิจฉัยด้วย ECG ไม่ต้องรอ Troponin ซึ่งขึ้นช้าและอาจยังปกติในชั่วโมงแรก เป้าหมาย door-to-ECG ≤ 10 นาที (กรณีเกิดอาการขณะอยู่ในหอผู้ป่วยก็ต้องทำ ECG ทันทีภายใน 10 นาทีหลังพบอาการเช่นกัน)"},
+{q:"ชายอายุ 55 ปี เกณฑ์ ST elevation ใน V2–V3 ที่เข้าได้กับ STEMI คือ",o:["≥ 0.5 mm","≥ 1 mm","≥ 2 mm","≥ 5 mm"],a:2,e:"V2–V3 ใช้เกณฑ์สูงกว่า lead อื่น: ชาย ≥40 ปี ≥2 mm, ชาย <40 ปี ≥2.5 mm, หญิง ≥1.5 mm เพราะปกติ ST ใน V2–V3 สูงเล็กน้อยอยู่แล้ว"},
+{q:"ST elevation ใน II, III, aVF บ่งชี้ตำแหน่งใด",o:["Anterior","Inferior","Lateral","Posterior"],a:1,e:"II, III, aVF มองผนังล่างของหัวใจ (Inferior) หลอดเลือดที่เกี่ยวข้องส่วนมากคือ RCA ควรเช็ก RV infarct ด้วย"},
+{q:"Inferior STEMI, BP 80/50 mmHg ควรระวังเรื่องใดมากที่สุดก่อนให้ยา",o:["ให้ Aspirin ไม่ได้","ห้ามให้ Nitrate เพราะอาจมี RV infarct และความดันตก","ห้ามทำ ECG ซ้ำ","ต้องให้ยาลดความดันก่อน"],a:1,e:"RV infarct ต้องการ preload ไนเตรตทำให้ preload ลดและความดันตกรุนแรง ควรทำ right-sided ECG (V4R) ให้สารน้ำถ้าไม่มี pulmonary edema"},
+{q:"เป้าหมายเวลาของการให้ยาละลายลิ่มเลือด (door-to-needle) คือ",o:["≤ 30 นาที","≤ 3 ชั่วโมง","≤ 6 ชั่วโมง","ไม่มีกำหนด"],a:0,e:"เมื่อ PCI ทำไม่ได้ทันเวลา ควรให้ยาละลายลิ่มภายใน 30 นาทีหลังถึงสถานพยาบาล ยิ่งเร็วยิ่งเซฟกล้ามเนื้อหัวใจ"},
+{q:"การวัด ST elevation ที่ถูกต้องคือ",o:["วัดที่จุดยอดของ T wave","วัดที่ J point เทียบเส้นฐาน (PR/TP segment)","วัดที่จุดสูงสุดของ R","วัดที่จุดเริ่มต้นของ P"],a:1,e:"ST elevation วัดที่ J point (จุดต่อ QRS–ST) เทียบกับเส้นฐาน PR หรือ TP segment ในแนวตั้ง 1 ช่องเล็ก = 1 mm การวัดผิดจุดทำให้ over/under-diagnose"},
+{q:"ผู้ป่วยมี LBBB เดิมไม่ทราบ และเจ็บแน่นอก ควรสนใจเกณฑ์ใดมากที่สุด",o:["QRS กว้าง = ปกติ ไม่ต้องทำอะไร","Concordant ST elevation ≥1 mm (Sgarbossa) = สงสัย STEMI","แค่ดู Troponin","ให้ยาแก้ปวดแล้วรอ"],a:1,e:"LBBB บัง ST ปกติ แต่ ST↑ ที่ concordant กับ QRS (≥1 mm) มีความจำเพาะสูงสำหรับ MI เฉียบพลัน ควรปรึกษาทันทีและถือเป็น STEMI-equivalent"},
+{q:"ผู้ป่วย 60 ปี Anterior STEMI อยู่ รพ.ชุมชน ศูนย์ PCI ห่างออกไป 3 ชั่วโมง ทางเลือกที่เหมาะสมที่สุดคือ",o:["ส่ง PCI อย่างเดียวโดยไม่ให้ยา","ตรวจข้อห้าม แล้วให้ยาละลายลิ่มเลือดภายใน 30 นาที และส่งต่อ","รอดูอาการ 24 ชม.","ให้ aspirin แล้วนัดมาใหม่"],a:1,e:"ถ้า first medical contact → PCI คาดว่าเกิน 120 นาที ให้ fibrinolysis เร็วที่สุด (≤30 นาที) หลังตรวจข้อห้าม แล้วส่งต่อเพื่อ cath ภายใน 2–24 ชม."},
+{q:"ผู้ป่วยหยุดเจ็บอกแล้ว EKG พบ T inversion ลึกใน V2–V3 และมีประวัติเจ็บอกเมื่อวาน ข้อใดถูก",o:["ปกติ กลับบ้านได้","Wellens pattern: LAD ตีบวิกฤต ห้าม stress test ปรึกษา/ส่งต่อ","เป็นกล้ามเนื้ออักเสบ","ต้องรอ Troponin ถึงตัดสินใจ"],a:1,e:"Wellens syndrome ช่วงไม่เจ็บ พบ T inversion ลึก/biphasic ใน V2–V3 บ่งชี้ LAD ตีบมาก เสี่ยงเกิด anterior MI ใหญ่ ห้ามทำ exercise test"},
+{q:"ผู้ป่วย STEMI มาถึงโรงพยาบาลที่ทำ PCI ไม่ได้ และต้องส่งต่อเพื่อทำ primary PCI เป้าหมาย FMC-to-device ตามแนวทางสากลคือ",o:["≤ 30 นาที","≤ 60 นาที","≤ 120 นาที","≤ 6 ชั่วโมง"],a:2,e:"ผู้ป่วยที่เริ่มที่ รพ. ซึ่งทำ PCI ไม่ได้ ควรส่งต่อให้ได้ primary PCI ภายใน 120 นาทีนับจาก first medical contact (ถ้ามาถึง PCI center โดยตรงเป้า ≤ 90 นาที) และควรออกจาก รพ. ต้นทางภายใน 30 นาที (door-in-door-out)"},
+{q:"ยาข้อใดควรให้ทันทีในผู้ป่วย STEMI ทุกราย หากไม่มีข้อห้าม",o:["Aspirin 162–325 mg เคี้ยว","Warfarin","Ibuprofen","Paracetamol"],a:0,e:"Aspirin ขนาดโหลด 162–325 mg เคี้ยวทันที (หลายประเทศใช้ 300 mg) ลดการตายอย่างชัดเจน ส่วน NSAIDs เช่น ibuprofen ควรหลีกเลี่ยงเพราะเพิ่มความเสี่ยงหัวใจวาย/เลือดออก"},
+{q:"ข้อใดเป็นข้อห้ามสัมบูรณ์ (absolute contraindication) ของยาละลายลิ่มเลือด",o:["อายุ 70 ปี","เบาหวาน","เคยมีเลือดออกในสมอง (ICH) มาก่อน","ความดัน 150/90 mmHg"],a:2,e:"เคยมี intracranial hemorrhage ไม่ว่าเมื่อใดเป็นข้อห้ามสัมบูรณ์ ข้ออื่นเช่น stroke ขาดเลือดภายใน 3 เดือน เลือดออกรุนแรง สงสัย aortic dissection ก็เป็นข้อห้ามเช่นกัน ส่วนอายุหรือเบาหวานไม่ใช่ข้อห้าม"},
+{q:"Primary PCI คืออะไร",o:["การให้ยาละลายลิ่มเลือดทางหลอดเลือดดำ","การสวนหัวใจขยายหลอดเลือดที่ตัน (balloon/stent) เป็นวิธีแรกโดยไม่ให้ยาละลายลิ่มก่อน","การผ่าตัดบายพาส","การทดสอบเดินสายพาน"],a:1,e:"Primary PCI คือการสวนหัวใจเปิดหลอดเลือดที่ตัน (culprit) ด้วยบอลลูนและขดลวด เป็นวิธี reperfusion ที่ได้ผลดีที่สุดเมื่อทำได้ทันเวลา แพทย์ผู้ชำนาญ"},
+{q:"หลังให้ยาละลายลิ่มเลือดที่ รพ. ที่ทำ PCI ไม่ได้ ข้อใดถูกต้องที่สุด",o:["ไม่ต้องทำอะไรต่อ ถ้าอาการดีขึ้น","ประเมินผลที่ 60–90 นาที และส่งต่อทุกรายเพื่อทำ angiography ภายใน 2–24 ชม.","ส่งกลับบ้านภายใน 24 ชม.","ให้ยาละลายลิ่มซ้ำทุก 6 ชม."],a:1,e:"หลังให้ยาละลายลิ่ม ต้องประเมินว่า reperfusion สำเร็จหรือไม่ (ST ลด ≥50%, อาการเจ็บดีขึ้น) ถ้าไม่สำเร็จ ส่ง rescue PCI ทันที และแม้สำเร็จก็ควรส่งต่อทำ angiography ภายใน 2–24 ชม. (pharmaco-invasive)"},
+{q:"หญิงอายุ 62 ปี เจ็บแน่นอก 40 นาที ECG พบ ST↑ 1.8 mm ใน V2 และ 1.7 mm ใน V3 lead อื่นปกติ ข้อใดถูกต้องที่สุด",o:["ไม่เข้าเกณฑ์ STEMI เพราะยังไม่ถึง 2 mm","เข้าเกณฑ์ STEMI เพราะผู้หญิงใช้เกณฑ์ V2–V3 ≥ 1.5 mm ใน ≥ 2 lead ที่ติดกัน","ต้องรอ ST↑ ≥ 5 mm จึงจะวินิจฉัยได้","เข้าเกณฑ์เฉพาะเมื่อมี Q wave ร่วมด้วย"],a:1,e:"เกณฑ์ ST↑ ที่ V2–V3 แยกตามเพศและอายุ: หญิง ≥ 1.5 mm, ชาย ≥ 40 ปี ≥ 2 mm, ชาย < 40 ปี ≥ 2.5 mm ผู้ป่วยรายนี้มี ST↑ 1.8 และ 1.7 mm ใน 2 lead ที่ติดกัน (V2, V3) จึงเข้าเกณฑ์ ต้องเปิด STEMI Fast Track ไม่ต้องรอ Q wave หรือผลเลือด"},
+{q:"Inferior STEMI พบ ST↑ ใน III มากกว่า II ร่วมกับ ST↓ ใน I และ aVL และมี ST↑ ใน V1 ข้อใดน่าจะเป็นมากที่สุด",o:["หลอดเลือด LAD ตีบ","RCA ตันส่วนต้น และอาจมี RV infarct ร่วมด้วย","Pericarditis","Wellens syndrome"],a:1,e:"ST↑ III > II และ ST↓ I/aVL (reciprocal) ชี้ไปที่ RCA (ถ้า II > III มักเป็น LCx) ส่วน ST↑ ใน V1 บ่งชี้ว่าห้องหัวใจขวาถูกกระทบ จึงควรติด V4R งดไนเตรตเมื่อ BP ต่ำ และระวังภาวะ bradycardia/AV block"}],
+post:[
+{ec:["ant",["V1","V2","V3","V4","I","aVL","II","III","aVF"]],q:"จาก EKG จำลองนี้ ตำแหน่งและหลอดเลือดที่สงสัยคือ",o:["Inferior / RCA","Anterior / LAD","Lateral / LCx","Normal"],a:1,e:"ST↑ ใน V1–V4 (และ I, aVL) = Anterior STEMI จาก LAD ส่วน II, III, aVF มี ST↓ เป็น reciprocal change ผู้ป่วยกลุ่มนี้เสี่ยงหัวใจล้มเหลว ควรส่งต่อด่วน"},
+{ec:["inf",["II","III","aVF","I","aVL","V5"]],q:"ST↓ ที่ I และ aVL ในกรณีนี้หมายถึง",o:["Posterior MI","Reciprocal change ยืนยัน Inferior STEMI","Pericarditis","ผลของยา"],a:1,e:"ST↑ II, III, aVF ร่วมกับ ST↓ ที่ I, aVL เป็น reciprocal change ซึ่งสนับสนุนว่าเป็นกล้ามเนื้อตายจริง ไม่ใช่ mimic"},
+{q:"หญิง 65 ปี เบาหวาน เหนื่อยง่าย จุกลิ้นปี่ เหงื่อแตก 40 นาที ไม่เจ็บอกชัดเจน ควรทำอย่างไร",o:["สรุปว่าเป็นโรคกระเพาะ ให้ยาลดกรด","ทำ 12-lead ECG ทันที เพราะอาจเป็น atypical ACS","นัดตรวจ EKG พรุ่งนี้","ส่งเจาะเลือดอย่างเดียว"],a:1,e:"ผู้หญิง ผู้สูงอายุ เบาหวาน มักมาด้วยอาการไม่ typical (จุกลิ้นปี่ เหนื่อย) การเหมาเป็นโรคกระเพาะเป็นสาเหตุ misdiagnosis ที่พบบ่อย ต้องทำ ECG ทันที"},
+{q:"ลำดับการเปลี่ยนแปลงของ EKG ใน STEMI ที่ถูกต้อง",o:["Q wave → Hyperacute T → T inversion","Hyperacute T → ST elevation → Q wave → T inversion","T inversion → ST elevation → Q wave","ST depression → Hyperacute T"],a:1,e:"เริ่มจาก T สูงกว้าง (hyperacute) → ST elevation → เกิด Q wave → ST ลดลงและ T inversion ถ้าเห็น Q wave ใหม่ แสดงว่ามีกล้ามเนื้อตายไปแล้วบางส่วน"},
+{q:"ชายอายุ 24 ปี เจ็บอกจี๊ด ดีขึ้นเมื่อโน้มตัวไปหน้า EKG: ST↑ เว้าขึ้นหลาย lead ร่วมกับ PR depression ไม่มี reciprocal change น่าจะเป็น",o:["Anterior STEMI","Pericarditis","Posterior MI","RV infarct"],a:1,e:"ST เว้าขึ้นทั่ว lead + PR depression + ไม่มี reciprocal + อาการดีขึ้นเมื่อโน้มตัว = Pericarditis (STEMI mimic) แต่หากไม่แน่ใจต้องปรึกษาแพทย์"},
+{q:"ผู้ป่วย Inferior STEMI BP 120/70 เพิ่งกิน sildenafil เมื่อ 6 ชั่วโมงก่อน ข้อใดถูก",o:["ให้ Nitrate อมใต้ลิ้นได้","ให้ Aspirin เคี้ยว งด Nitrate และส่งต่อ/ปรึกษาทันที","รอจนครบ 24 ชม. ก่อนส่ง","ให้ morphine อย่างเดียว"],a:1,e:"PDE5 inhibitor + Nitrate → ความดันตกรุนแรง ห้ามให้ภายใน 24 ชม. (tadalafil 48 ชม.) Aspirin ยังให้ได้ และห้ามชะลอการ reperfusion"},
+{ec:["hyp",["V1","V2","V3","V4","II","aVF"]],q:"ผู้ป่วยเจ็บอก 30 นาที EKG ดังภาพ (T สูงกว้างใน V2–V4 ST ยกเล็กน้อย) ข้อใดเหมาะสมที่สุด",o:["ปกติ ให้กลับบ้าน","Hyperacute T = STEMI ระยะแรก ให้ ASA, ทำ ECG ซ้ำ 10–15 นาที และปรึกษา","เป็น hyperkalemia เท่านั้น","รอ Troponin 6 ชั่วโมง"],a:1,e:"Hyperacute T ใน lead หน้าอกเป็นสัญญาณแรกของ LAD occlusion ก่อน ST↑ ชัดเจน ต้อง serial ECG และปรึกษา ไม่รอผลเลือด"},
+{ec:["post",["V1","V2","V3","V4","II","aVF"]],q:"EKG ดังภาพ ST↓ ลึกใน V1–V3 มี R เด่น ผู้ป่วยเจ็บอกรุนแรง ขั้นต่อไปที่ถูกต้อง",o:["อ่านว่า anterior ischemia ให้ยารอ","ติดขั้ว V7–V9 เพื่อหา Posterior STEMI","ทำ V4R เท่านั้น","ไม่ต้องทำอะไรเพิ่ม"],a:1,e:"ST↓ V1–V3 + R สูงคือภาพสะท้อนของ ST↑ ผนังหลัง ติด V7–V9 ถ้า ST↑ ≥0.5 mm = Posterior STEMI ต้อง reperfusion"},
+{q:"Inferior STEMI: HR 40, BP 80/50, ปอดใส, JVP เด่น ข้อใดถูก",o:["ให้ nitrate อม + morphine","งด nitrate ทำ V4R ให้ NSS bolus และพิจารณา atropine/pacing ถ้า bradycardia มีอาการ","ให้ยาขับปัสสาวะ","ให้ β-blocker ทันที"],a:1,e:"ภาพเข้าได้กับ RV infarct + bradycardia ความดันตก JVP สูงปอดใส ต้องการ preload ห้าม nitrate/ยาขับปัสสาวะ/β-blocker ให้สารน้ำ แก้ bradycardia ตามอาการ และส่งต่อเร่งด่วน"},
+{ec:["wel",["V1","V2","V3","V4","V5","II"]],q:"ผู้ป่วยไม่เจ็บอกขณะทำ ECG แต่เมื่อเช้าเจ็บแน่นอก 20 นาที EKG ดังภาพ ข้อใดถูกต้อง",o:["ไม่ต้องทำอะไร เพราะไม่มีอาการ","Wellens: LAD ตีบวิกฤต ปรึกษา/ส่งต่อ และห้าม stress test","เป็น pericarditis","นัด EKG ซ้ำสัปดาห์หน้า"],a:1,e:"T inversion ลึกใน V2–V4 ขณะไม่เจ็บ + ประวัติเจ็บอก = Wellens pattern ซึ่งมักตามด้วย anterior MI ใหญ่ถ้าไม่ได้รักษา"},
+{q:"ผู้ป่วย anterior STEMI ภาวะช็อก (BP 70/40 ปลายมือเย็น) อยู่ รพ. ที่ทำ PCI ไม่ได้ ใช้เวลาส่งต่อประมาณ 150 นาที ควรทำอย่างไร",o:["ให้ยาละลายลิ่มแล้วรอดูอาการที่ รพ. เดิม","ส่งต่อด่วนเพื่อทำ PCI แม้เกินเวลาเป้าหมาย พร้อมประคับประคองระหว่างทาง","ให้ nitrate เพื่อลดภาระหัวใจ","รอความดันดีขึ้นก่อนส่ง"],a:1,e:"Cardiogenic shock เป็นข้อบ่งชี้ให้ทำ emergent PCI โดยไม่คำนึงถึงเวลา ควรส่งต่อทันทีพร้อมประคับประคอง ห้ามให้ nitrate เมื่อความดันต่ำ ยาละลายลิ่มมักได้ผลน้อยในภาวะช็อก"},
+{q:"ให้ streptokinase ไปแล้ว 90 นาที ผู้ป่วยยังเจ็บอกมาก ST ลดลงเพียงประมาณ 20% ควรทำอย่างไร",o:["ถือว่าสำเร็จ เฝ้าสังเกตต่อ","เป็น failed reperfusion ส่ง rescue PCI ทันที","ให้ streptokinase ซ้ำ","ให้กลับบ้าน"],a:1,e:"ST resolution <50% ที่ 60–90 นาที ร่วมกับอาการเจ็บต่อเนื่อง = ล้มเหลวของการละลายลิ่ม ต้องทำ rescue PCI ทันที ห้ามให้ streptokinase ซ้ำเพราะแอนติบอดีและเสี่ยงแพ้"},
+{q:"ผู้ป่วย STEMI จะไปทำ primary PCI ชุดยาก่อนทำหัตถการใดเหมาะสมที่สุด",o:["Aspirin 300 mg + clopidogrel 75 mg เท่านั้น","Aspirin 300 mg + P2Y12 inhibitor ขนาดโหลด (เช่น ticagrelor 180 mg) + heparin","Warfarin เพียงอย่างเดียว","Enoxaparin อย่างเดียวโดยไม่ให้ antiplatelet"],a:1,e:"ก่อน primary PCI ให้ aspirin ขนาดโหลด + P2Y12 inhibitor ขนาดโหลด (ticagrelor 180 mg หรือ prasugrel 60 mg หรือ clopidogrel 600 mg) และ anticoagulant (UFH) ในห้องสวนหัวใจ ส่วน warfarin ไม่ใช้ในช่วงนี้"},
+{q:"ผู้ป่วย STEMI เคยมี ischemic stroke เมื่อ 5 สัปดาห์ก่อน อยู่ รพ. ที่ต้องใช้เวลาส่งต่อ 3 ชั่วโมง ข้อใดเหมาะสม",o:["ให้ยาละลายลิ่มทันที","ถือเป็นข้อห้ามยาละลายลิ่ม ต้องส่งต่อทำ primary PCI แม้ล่าช้า","รอดูอาการ 24 ชม.","ให้ aspirin อย่างเดียวและไม่ส่งต่อ"],a:1,e:"Ischemic stroke ภายใน 3 เดือนเป็นข้อห้ามของยาละลายลิ่ม จึงควรส่งต่อเพื่อทำ PCI แม้เกิน 120 นาที พร้อมให้ aspirin และยาตามแนวทาง"},
+{q:"ข้อใดคือการส่งต่อผู้ป่วย STEMI ที่เหมาะสมที่สุด",o:["รอผล troponin และ X-ray ก่อนโทรประสาน","ส่ง ECG และโทรประสาน รพ. ปลายทางทันที มีบันทึกเวลา และมีพยาบาล/เครื่อง defibrillator ไปด้วย","ส่งโดยรถธรรมดาไม่ต้อง monitor","รอให้ญาติมาครบก่อนส่งทุกกรณี"],a:1,e:"การส่งต่อต้องเร็วและปลอดภัย: ส่ง ECG ไปก่อน โทรประสาน cath lab/แพทย์ปลายทาง บันทึกเวลาสำคัญ (onset, FMC, ECG, ยา) ไปกับทีมที่ดูแลได้ มี monitor และ defibrillator เตรียมให้ครบ ไม่รอ troponin หรือภาพถ่ายรังสี"},
+{q:"ชายอายุ 38 ปี เจ็บอกแบบ typical 30 นาที ECG: ST↑ 2.2 mm ใน V2 และ V3 ไม่มี reciprocal change ข้อใดเหมาะสมที่สุด",o:["ไม่ใช่ STEMI แน่นอน เพราะอายุน้อย ให้กลับบ้านได้","ค่ายังไม่ถึงเกณฑ์ชาย < 40 ปี (≥ 2.5 mm) แต่อาการ typical จึงไม่ควรตัดทิ้ง ต้องทำ ECG ซ้ำ 10–15 นาที ดู hyperacute T/reciprocal และปรึกษาแพทย์","ให้ยาละลายลิ่มเลือดทันทีเพราะเข้าเกณฑ์แล้ว","รอ Troponin 6 ชั่วโมงก่อนตัดสินใจ"],a:1,e:"เกณฑ์ตัวเลขเป็นแนวทาง ไม่ใช่ข้อห้ามคิดต่อ ในชายอายุ < 40 ปี ST↑ V2–V3 มักเป็น early repolarization แต่ถ้าอาการเข้าได้กับ ACS ต้อง serial ECG เปรียบเทียบ ECG เก่า ดู reciprocal, T สูงผิดปกติ และปรึกษาแพทย์โดยไม่รอผลเลือด การให้ยาละลายลิ่มก่อนยืนยันไม่เหมาะสม"},
+{ec:["lat",["I","aVL","V5","V6","III","aVF"]],q:"จากภาพ ST↑ ใน I, aVL, V5, V6 ส่วน III, aVF มี ST↓ ข้อใดถูกต้อง",o:["Inferior STEMI; lead I, aVL เป็น reciprocal","Lateral STEMI (LCx/diagonal); III และ aVF เป็น reciprocal","Anterior STEMI จาก LAD ส่วนต้น","Posterior MI"],a:1,e:"I, aVL, V5, V6 มองผนังด้านข้าง (lateral) ST↑ ร่วมกับ ST↓ ใน III, aVF ซึ่งอยู่ตรงข้าม จึงเป็น reciprocal change ยืนยันกล้ามเนื้อหัวใจขาดเลือดเฉียบพลัน หลอดเลือดที่เกี่ยวข้องมัก LCx หรือ diagonal branch ของ LAD"}]};
+function render(k){document.getElementById("q"+k).innerHTML=Q[k].map(function(x,i){return '<div class="q"><b>'+(i+1)+'. '+x.q+'</b>'+(x.ec?eg(x.ec[0],x.ec[1]):'')+x.o.map(function(t,j){return '<label><input type="radio" name="'+k+i+'" value="'+j+'"> '+t+'</label>';}).join("")+'<div class="ex hid"></div></div>';}).join("");}
+var sc={};
+function grade(k){var s=0,qs=document.querySelectorAll("#q"+k+" .q");Q[k].forEach(function(x,i){var sel=document.querySelector('input[name="'+k+i+'"]:checked'),ls=qs[i].querySelectorAll("label");ls.forEach(function(l){l.classList.remove("c","w");});ls[x.a].classList.add("c");var ok=sel&&+sel.value===x.a;if(ok)s++;else if(sel)ls[+sel.value].classList.add("w");var e=qs[i].querySelector(".ex");e.classList.remove("hid");e.innerHTML=(ok?"✅ ถูกต้อง ":sel?"❌ ยังไม่ถูก ":"⚠️ ไม่ได้ตอบ ")+"เฉลย: ข้อ "+"กขคง"[x.a]+"<br>"+x.e;});sc[k]=s;var n=Q[k].length,m=s/n>=.8?"ผ่านเกณฑ์ ✔":"ควรทบทวนบทเรียน";var h='<div class="card"><div class="sc">คะแนน '+s+'/'+n+' — '+m+'</div>';if(k=="post"&&sc.pre!=null)h+='ก่อนเรียน '+sc.pre+'/'+n+' → หลังเรียน '+s+'/'+n+' (เปลี่ยนแปลง '+(s-sc.pre>=0?"+":"")+(s-sc.pre)+')';h+='</div>';document.getElementById("r"+k).innerHTML=h;document.getElementById("r"+k).scrollIntoView({behavior:"smooth"});if(k=="post")finish(s);}
+render("pre");render("post");
+// ---- Game / Leaderboard (Google Sheets) ----
+var me={name:"",org:"",id:null},rows=[],local={},ONLINE=false;
+var CFG_OK=(typeof SHEET_URL==="string"&&SHEET_URL.indexOf("http")===0);
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+document.body.classList.add("lock");
+try{var sv=JSON.parse(localStorage.getItem("stemiMe")||"null");if(sv){rn.value=sv.n;ro.value=sv.o;}}catch(e){}
+try{me.id=localStorage.getItem("stemiUid");}catch(e){}
+if(!me.id){me.id="u"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);try{localStorage.setItem("stemiUid",me.id);}catch(e){}}
+function startGame(){var n=rn.value.trim(),o=ro.value.trim();if(!n||!o){rm.textContent="กรุณากรอกชื่อ-สกุลและหน่วยงานให้ครบ";return;}me.name=n;me.org=o;try{localStorage.setItem("stemiMe",JSON.stringify({n:n,o:o}));}catch(e){}document.body.classList.remove("lock");scrollTo(0,0);}
+function lvl(s){return s>=17?"🏆 Master STEMI":s>=14?"🥇 ผู้เชี่ยวชาญ STEMI":s>=10?"🥈 ผู้ชำนาญ":"🥉 ผู้เริ่มต้น (ทบทวนอีกนิด!)";}
+function curList(){return ONLINE?rows.slice():Object.keys(local).map(function(k){return local[k];});}
+function drawBoard(){var l=curList();l.sort(function(a,b){return b.pts-a.pts||a.sec-b.sec;});var h=l.length?'<div class="tbl"><table class="lbt"><tr><th>อันดับ</th><th>ชื่อ</th><th>หน่วยงาน</th><th>ก่อน→หลัง</th><th>คะแนน</th></tr>'+l.slice(0,30).map(function(r,i){return '<tr><td class="medal">'+(["🥇","🥈","🥉"][i]||(i+1))+'</td><td'+(r.uid===me.id?' class="me"':'')+'>'+esc(r.name)+(r.uid===me.id?' (คุณ)':'')+'</td><td>'+esc(r.org)+'</td><td>'+r.pre+'→'+r.post+'/17</td><td><b>'+r.pts+'</b></td></tr>';}).join("")+'</table></div>':'<div class="card">ยังไม่มีผู้ทำแบบทดสอบหลังเรียน — เป็นคนแรกเลย!</div>';if(!ONLINE)h+='<p style="color:var(--mu);font-size:.85rem">⚠️ '+(CFG_OK?'เชื่อมต่อตารางคะแนนกลางไม่ได้ชั่วคราว (แสดงเฉพาะคะแนนบนเครื่องนี้) — ตรวจอินเทอร์เน็ตแล้วลองใหม่':'ยังไม่ได้ตั้งค่าตารางคะแนนกลาง (แสดงเฉพาะคะแนนบนเครื่องนี้)')+'</p>';document.querySelectorAll(".lb").forEach(function(e){e.innerHTML=h;});}
+async function loadBoard(){if(!CFG_OK){drawBoard();return;}try{var r=await fetch(SHEET_URL+(SHEET_URL.indexOf("?")>-1?"&":"?")+"action=list&t="+Date.now());var j=await r.json();if(j&&j.ok){rows=j.rows||[];ONLINE=true;}else{ONLINE=false;}}catch(e){ONLINE=false;}drawBoard();}
+async function saveScore(rec){if(!CFG_OK){local[rec.uid]=rec;drawBoard();return;}try{var r=await fetch(SHEET_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"save",rec:rec})});var j=await r.json();ONLINE=!!(j&&j.ok);if(!ONLINE)local[rec.uid]=rec;}catch(e){ONLINE=false;local[rec.uid]=rec;}await loadBoard();}
+function finish(s){var sec=window.t0?Math.round((Date.now()-t0)/1000):900,bonus=Math.max(0,Math.round(50*(1-Math.min(sec,900)/900))),gain=Math.max(0,s-(sc.pre||0)),pts=s*100+gain*20+bonus;var rec={uid:me.id,name:me.name,org:me.org,pre:sc.pre||0,post:s,pts:pts,sec:sec,ts:Date.now()};var old=curList().filter(function(r){return r.uid===me.id;})[0];var keep=old&&old.pts>=pts;if(!keep)saveScore(rec);document.getElementById("rpost").innerHTML+='<div class="rw">🎉 '+esc(me.name)+' ได้ '+pts+' คะแนน<br>'+lvl(s)+'<br><small>('+s+'×100 + พัฒนาการ '+gain+'×20 + โบนัสเวลา '+bonus+(keep?' — คะแนนเดิมของคุณสูงกว่า จึงคงอันดับเดิมไว้':'')+')</small></div><h3>🏆 อันดับตอนนี้</h3>';t0=null;}
+async function resetBoard(){var pn=document.getElementById("pin"),am=document.getElementById("am");var p=pn.value.trim();if(!p){am.textContent="กรุณาใส่รหัสผู้จัด";return;}if(!CFG_OK){if(p!=="0000"){am.textContent="❌ รหัสไม่ถูกต้อง";return;}local={};drawBoard();am.textContent="✅ ล้างอันดับบนเครื่องนี้แล้ว";pn.value="";return;}am.textContent="⏳ กำลังล้าง…";try{var r=await fetch(SHEET_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"reset",pin:p})});var j=await r.json();if(j&&j.ok){rows=[];local={};pn.value="";am.textContent="✅ ล้างอันดับทั้งหมดแล้ว";await loadBoard();}else{am.textContent="❌ "+((j&&j.error)||"รหัสไม่ถูกต้อง");}}catch(e){am.textContent="⚠️ ล้างไม่สำเร็จ: เชื่อมต่อไม่ได้";}}
+loadBoard();if(CFG_OK)setInterval(loadBoard,20000);
+document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){document.querySelectorAll("nav button").forEach(function(x){x.classList.toggle("on",x==b);});if(b.dataset.t=="post"&&!window.t0)window.t0=Date.now();["pre","les","post","rank"].forEach(function(id){document.getElementById(id).classList.toggle("hid",id!=b.dataset.t);});scrollTo(0,0);};});
+// ---- Teaching figures ----
+function anno(st,t,col,ttl,note){var b=[[0,0],[8,0],[15,6],[22,0],[30,0],[33,-3],[37,26],[41,-8],[44,st]];for(var x=46;x<=94;x+=3){var u=(x-44)/50;b.push([x,st*(1-u*u)+t*Math.sin(Math.PI*u)]);}b.push([100,0]);var X=function(x){return 14+x*2.7},Y=function(v){return 118-v*3.4},T=function(x,y,s,c){return '<text x="'+x+'" y="'+y+'" font-size="11" fill="'+(c||'#333')+'">'+s+'</text>';};var pts=b.map(function(a){return X(a[0]).toFixed(0)+','+Y(a[1]).toFixed(0);}).join(' ');return '<div><b>'+ttl+'</b><svg viewBox="0 0 300 175" style="width:100%;background:#fff4f4;border:1px solid #e57373;border-radius:8px"><line x1="6" x2="294" y1="118" y2="118" stroke="#1e88e5" stroke-dasharray="4 3"/>'+T(8,132,'เส้นฐาน (PR/TP)','#1e88e5')+'<polyline fill="none" stroke="'+col+'" stroke-width="2.2" points="'+pts+'"/>'+T(X(11),Y(6)-5,'P')+T(X(34),Y(26)-5,'QRS')+'<line x1="'+X(44)+'" x2="'+X(44)+'" y1="'+Y(st)+'" y2="160" stroke="#c62828" stroke-dasharray="2 2"/><circle cx="'+X(44)+'" cy="'+Y(st)+'" r="4" fill="#c62828"/>'+T(X(44)-22,172,'J point','#c62828')+(st>2?'<line x1="'+X(58)+'" x2="'+X(58)+'" y1="118" y2="'+Y(st)+'" stroke="#c62828" stroke-width="2"/>'+T(X(60),(118+Y(st))/2+4,'ST ยก','#c62828'):'')+T(X(74),Y(st*.75+t)-6,'T')+'</svg><div style="font-size:.88rem">'+note+'</div></div>';}
+var TC={I:'#1e88e5',aVL:'#1e88e5',V5:'#1e88e5',V6:'#1e88e5',II:'#2e7d32',III:'#2e7d32',aVF:'#2e7d32',V1:'#fb8c00',V2:'#fb8c00',V3:'#fb8c00',V4:'#fb8c00',aVR:'#888'};
+function twelve(c){var d=Object.assign({},D[c],{aVR:c=='inf'?[-3,3]:[-2,4]}),R=[['I','aVR','V1','V4'],['II','aVL','V2','V5'],['III','aVF','V3','V6']],h='';R.forEach(function(r){r.forEach(function(k){var v=d[k],m=v[0]>=3?' <span style="color:#c62828">▲</span>':v[0]<=-3?' <span style="color:#1565c0">▼</span>':'';if(k=='aVR')m='';h+='<div style="border:3px solid '+TC[k]+'"><b>'+k+m+'</b>'+strip(v[0],v[1],k=='aVR'?2:k=='V1')+'</div>';});});return h;}
+document.getElementById('annoBox').innerHTML=anno(0,5,'#2e7d32','① ปกติ','ST อยู่ระดับเส้นฐาน J point ไม่ยกขึ้น')+anno(11,9,'#c62828','② STEMI: ST↑ แบบนูน','J point ยกสูงกว่าเส้นฐาน ST นูนขึ้นต่อเนื่องไปรวมกับ T (tombstone) · ภาพจำลอง');
+document.getElementById('t12a').innerHTML=twelve('ant');document.getElementById('t12b').innerHTML=twelve('inf');
+</script></body></html>
